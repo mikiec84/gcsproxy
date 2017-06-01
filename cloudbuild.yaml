@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get']
+  env: ['PROJECT_ROOT=gcsproxy']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=gcsproxy']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--tag=gcr.io/$PROJECT_ID/gcsproxy', '.']
+images: ['gcr.io/$PROJECT_ID/gcsproxy']
